@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pl-PL" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Przepisy z wwsi">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>przepisy</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!-- Custom styles for this template -->
+    <link href="css/style.css.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+</head>
+<header id="header">
+    <a href="/index" class="logo">Przepis na zaliczenie przedmiotu</a>
+    <nav class="right">
+        <a href="/login" class="button alt">Zaloguj</a>
+    </nav>
+</header>
+<body>
+
+            <br> <br>
+            <div class="container">
+                <div class="row">
+                   <div class="col-md-4" th:each="recipe : ${recipes}">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-body">
+                    <span class="card-text" th:text="${recipe.owner}"></span><br>
+                                <b><span class="card-text" th:text="${recipe.title}"></span></b><br>
+                                <span class="card-text" th:text="${recipe.description}"></span><br>
+                                <div class="d-flex justify-content-between align-items-center"><br><br>
+                                    <div class="btn-group">
+                                        <a class="btn btn-sm btn-outline-secondary"
+                                           th:href="@{/recipe-details/{id}(id = ${recipe.id})}">Więcej informacji</a>
+                                    </div>
+                                    <small class=" text-muted" th:text="${recipe.cookTime}"></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div>
+                    <body class="text-center">
+                    <a href="/new-recipe" class="btn btn-lg btn-secondary">Dodaj nowy przepis</a>
+
+                </div>
+            </div>
+    </main>
+
+</div>
+</body>
+</html>
